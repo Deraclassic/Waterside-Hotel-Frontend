@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const api = axios.create({
-  baseUrl : "http://localhost:9192"
+  baseURL : "http://localhost:9192"
 })
 
 /*This function adds a new room to the database */

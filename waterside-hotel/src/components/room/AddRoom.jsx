@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import RoomTypeSelector from '../common/RoomTypeSelector'
 
 const AddRoom = () => {
   const[newRoom, setNewRoom] = useState({
@@ -39,7 +40,7 @@ const AddRoom = () => {
       const success = await addRoom(newRoom.photo, newRoom.roomType, newRoom.roomPrice)
       if(success !== undefined){
         setSuccessMessage("A new room was added to the database!")
-        setNewRoom({photo: null, roomType: "", roomPrice: ""})
+        setNewRoom({photo: null, roomType: "", roomPrice: 0})
         setImagePreview("")
         setErrorMessage("")
       }else{
@@ -61,7 +62,12 @@ const AddRoom = () => {
             <label htmlFor='roomType' className='form-label'>
               Room Type
             </label>
-            <div></div>
+            <div>
+              <RoomTypeSelector
+                handleRoomInputChange={handleRoomInputChange}
+                newRoom={newRoom}
+              />
+            </div>
           </div>
 
           <div className='mb-3'>
